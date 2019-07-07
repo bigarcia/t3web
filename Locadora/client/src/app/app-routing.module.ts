@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { ClienteCadastroComponent } from './components/cliente-cadastro/cliente-cadastro.component';
 import { ClienteDetalhesComponent } from './components/cliente-detalhes/cliente-detalhes.component';
@@ -12,6 +13,9 @@ import { LocacoesComponent } from './components/locacoes/locacoes.component';
 import { LocacaoCadastroComponent } from './components/locacao-cadastro/locacao-cadastro.component';
 import { LocacaoDetalhesComponent } from './components/locacao-detalhes/locacao-detalhes.component';
 import { LocacaoEdicaoComponent } from './components/locacao-edicao/locacao-edicao.component';
+
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './helpers/auth-guard';
 
 const routes: Routes = [
   {
@@ -51,8 +55,11 @@ const routes: Routes = [
     {
       path: 'locacao-edicao/:id', component: LocacaoEdicaoComponent, data: { title: 'Edição Locacao' }
     },
+    {
+        path: 'login', component: LoginComponent, data: {title: 'Login'}
+    },
     { 
-       path: '', redirectTo: '/locadoras', pathMatch: 'full'
+       path: '', redirectTo: '/locacoes', pathMatch: 'full'
     }
   
   ];

@@ -1,50 +1,26 @@
 package server
 
-import br.ufscar.dc.dsw.Cliente
 import br.ufscar.dc.dsw.Locadora
 import br.ufscar.dc.dsw.Locacao
+import br.ufscar.dc.dsw.Cliente
+import br.ufscar.dc.dsw.User
+import br.ufscar.dc.dsw.UserRole
+import br.ufscar.dc.dsw.Role
 
 class BootStrap {
-
     def init = { servletContext ->
-    
-        Locadora locadora = new Locadora(cnpj: '2222222222222', nome: 'Locadora1')
+        Role admin = new Role(authority: 'ROLE_ADMIN').save()
+        User user = new User(username: "admin", password: "admin").save()
+        UserRole.create(user, admin, true)
+        
+        Locadora locadora = new Locadora(cnpj:'123456789', nome: 'Locadora 1', cidade: 'São Carlos')
         locadora.save()
-    
-        Cliente cliente = new Cliente (cpf: '11111111111', nome: 'Cliente1')
+        
+        Cliente cliente = new Cliente(cpf:'12312312312', nome:'Maria Silva', telefone:'38881122', sexo:'f', data:'01/07/2019')
         cliente.save()
         
-        Locacao locacao = new Locacao (data: '11/11/1111', hora: '09:00', cliente: cliente, locadora: locadora)
+        Locacao locacao = new Locacao (data: '05/07/2019', hora: '15h00', cliente: cliente, locadora: locadora)
         locacao.save()
-
-     
-
-        if (cliente.hasErrors()) {
-            println "Cadastro de Cliente com erros"
-            println cliente.errors
-        } else {
-            println "Cliente criado com sucesso"
-        }
-		
-        println " "
-
-        if (locadora.hasErrors()) {
-            println "Cadastro de Locadora com erros"
-            println locadora.errors
-        } else {
-            println "Locadora criado com sucesso"
-        }
-		
-        println " "
-
-        if (locacao.hasErrors()) {
-            println "Cadastro de Locacao com erros"
-            println locacao.errors
-        } else {
-            println "Locacao criado com sucesso"
-        }
-		
-        println " "
     }
     def destroy = {
     }

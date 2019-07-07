@@ -6,10 +6,9 @@ model {
 
 json {
     id locacao.id
-    autor locacao.autor
-    titulo locacao.titulo
-    ano locacao.ano
-    preco locacao.preco
+    data locacao.data
+    hora locacao.hora
+
     cliente {
         id locacao.cliente.id
         nome locacao.cliente.nome

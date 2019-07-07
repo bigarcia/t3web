@@ -1,0 +1,12 @@
+import br.ufscar.dc.dsw.Locadora
+
+model {
+	Locadora locadora
+}
+
+json {
+    id locadora.id
+    cnpj locadora.cnpj
+    nome locadora.nome
+    cidade locadora.cidade
+}

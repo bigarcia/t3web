@@ -16,10 +16,19 @@ class BootStrap {
      
 
         if (cliente.hasErrors()) {
-            println "Cadastro de Cliente1 com erros"
+            println "Cadastro de Cliente com erros"
             println cliente.errors
         } else {
             println "Cliente criado com sucesso"
+        }
+		
+        println " "
+
+         if (locadora.hasErrors()) {
+            println "Cadastro de Locadora com erros"
+            println locadora.errors
+        } else {
+            println "Locadora criado com sucesso"
         }
 		
         println " "

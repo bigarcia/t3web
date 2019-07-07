@@ -7,6 +7,10 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { ClienteCadastroComponent } from './components/cliente-cadastro/cliente-cadastro.component';
 import { ClienteDetalhesComponent } from './components/cliente-detalhes/cliente-detalhes.component';
 import { ClienteEdicaoComponent } from './components/cliente-edicao/cliente-edicao.component';
+import { LocadorasComponent } from './components/locadoras/locadoras.component';
+import { LocadoraCadastroComponent } from './components/locadora-cadastro/locadora-cadastro.component';
+import { LocadoraDetalhesComponent } from './components/locadora-detalhes/locadora-detalhes.component';
+import { LocadoraEdicaoComponent } from './components/locadora-edicao/locadora-edicao.component';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,13 +27,18 @@ import {
   MatFormFieldModule } from "@angular/material";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ClientesComponent,
     ClienteCadastroComponent,
     ClienteDetalhesComponent,
-    ClienteEdicaoComponent
+    ClienteEdicaoComponent,
+    LocadorasComponent,
+    LocadoraCadastroComponent,
+    LocadoraDetalhesComponent,
+    LocadoraEdicaoComponent
   ],
   imports: [
     BrowserModule,

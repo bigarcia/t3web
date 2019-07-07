@@ -69,6 +69,48 @@ export class ApiService {
     );
   }
 
+  getLocadoras (): Observable<Locadora[]> {
+    const url = `${apiUrl}/locadoras`;
+    return this.http.get<Locadora[]>(url)
+      .pipe(
+        tap(heroes => console.log('getLocadoras')),
+        catchError(this.handleError('getLocadoras', []))
+      );
+  }
+  
+  getLocadora(id: number): Observable<Locadora> {
+    const url = `${apiUrl}/locadoras/${id}`;
+    return this.http.get<Locadora>(url).pipe(
+      tap(_ => console.log(`getLocadora id=${id}`)),
+      catchError(this.handleError<Locadora>(`getLocadora id=${id}`))
+    );
+  }
+  
+  addLocadora (locadora): Observable<Locadora> {
+    const url = `${apiUrl}/locadoras`;
+    return this.http.post<Locadora>(url, locadora, httpOptions).pipe(
+      tap((locadora: Locadora) => console.log(`addLocadora w/id=${locadora.id}`)),
+      catchError(this.handleError<Locadora>('addLocadora'))
+    );
+  }
+  
+  updateLocadora (id, locadora): Observable<any> {
+    const url = `${apiUrl}/locadoras/${id}`;
+    return this.http.put(url, locadora, httpOptions).pipe(
+      tap(_ => console.log(`updateLocadora id=${id}`)),
+      catchError(this.handleError<any>('updateLocadora'))
+    );
+  }
+  
+  deleteLocadora (id): Observable<Locadora> {
+    const url = `${apiUrl}/locadoras/${id}`;
+    return this.http.delete<Locadora>(url, httpOptions).pipe(
+      tap(_ => console.log(`deleteLocadora id=${id}`)),
+      catchError(this.handleError<Locadora>('deleteLocadora'))
+    );
+  }
+
+
   
 }
 

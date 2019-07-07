@@ -8,6 +8,10 @@ import { LocadorasComponent } from './components/locadoras/locadoras.component';
 import { LocadoraCadastroComponent } from './components/locadora-cadastro/locadora-cadastro.component';
 import { LocadoraDetalhesComponent } from './components/locadora-detalhes/locadora-detalhes.component';
 import { LocadoraEdicaoComponent } from './components/locadora-edicao/locadora-edicao.component';
+import { LocacoesComponent } from './components/locacoes/locacoes.component';
+import { LocacaoCadastroComponent } from './components/locacao-cadastro/locacao-cadastro.component';
+import { LocacaoDetalhesComponent } from './components/locacao-detalhes/locacao-detalhes.component';
+import { LocacaoEdicaoComponent } from './components/locacao-edicao/locacao-edicao.component';
 
 const routes: Routes = [
   {
@@ -34,6 +38,18 @@ const routes: Routes = [
     },
     {
       path: 'locadora-edicao/:id', component: LocadoraEdicaoComponent, data: { title: 'Edição Locadora' }
+    },
+    {
+      path: 'locacoes', component: LocacoesComponent, data: { title: 'Lista de Locacoes' }
+    },
+    {
+      path: 'locacao-detalhes/:id', component: LocacaoDetalhesComponent, data: { title: 'Detalhes do Locacao' }
+    },
+    {
+      path: 'locacao-cadastro', component: LocacaoCadastroComponent, data: { title: 'Cadastro Locacao' }
+    },
+    {
+      path: 'locacao-edicao/:id', component: LocacaoEdicaoComponent, data: { title: 'Edição Locacao' }
     },
     { 
        path: '', redirectTo: '/locadoras', pathMatch: 'full'

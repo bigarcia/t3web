@@ -1,0 +1,38 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/locacoes']">
+      <mat-icon>list</mat-icon>
+    </a>
+  </div>
+  <mat-card class="example-card">
+    <!--<mat-card-header>
+      <mat-card-subtitle>{{locacao.data}}</mat-card-subtitle>
+      <mat-card-subtitle>{{locacao.hora}}</mat-card-subtitle>
+      <mat-card-subtitle>{{locacao.cliente.nome}}</mat-card-subtitle>
+      <mat-card-subtitle>{{locacao.locadora.nome}}</mat-card-subtitle>
+    </mat-card-header>-->
+    <mat-card-content>
+      <dl>
+        <dt>Data:</dt>
+        <dd>{{locacao.data}}</dd>
+        <dt>Hora:</dt>
+        <dd>{{locacao.hora}}</dd>
+        <dt>Cliente nome:</dt>
+        <dd>{{locacao.cliente.nome}}</dd>
+        <dt>Locadora nome:</dt>
+        <dd>{{locacao.locadora.nome}}</dd>
+      </dl>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-flat-button color="primary" [routerLink]="['/locacao-edicao', locacao.id]">
+        <mat-icon>edit</mat-icon>
+      </a>
+      <a mat-flat-button color="warn" (click)="deleteLocacao(locacao.id)">
+        <mat-icon>delete</mat-icon>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,21 @@
+import br.ufscar.dc.dsw.Locacao
+
+model {
+	Locacao locacao
+}
+
+json {
+    id locacao.id
+    autor locacao.autor
+    titulo locacao.titulo
+    ano locacao.ano
+    preco locacao.preco
+    cliente {
+        id locacao.cliente.id
+        nome locacao.cliente.nome
+    }
+	locadora {
+        id locacao.locadora.id
+        nome locacao.locadora.nome
+    }
+}

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { catchError, tap, map } from 'rxjs/operators';
 import { Locadora } from '../models/locadora';
 import { Cliente } from '../models/cliente';
+import { Locacao } from '../models/locacao';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -110,7 +111,46 @@ export class ApiService {
     );
   }
 
-
+  getLocacoes (): Observable<Locacao[]> {
+    const url = `${apiUrl}/locacs`;
+    return this.http.get<Locacao[]>(url)
+      .pipe(
+        tap(heroes => console.log('getLocacoes')),
+        catchError(this.handleError('getLocacoes', []))
+      );
+  }
+  
+  getLocacao(id: number): Observable<Locacao> {
+    const url = `${apiUrl}/locacoes/${id}`;
+    return this.http.get<Locacao>(url).pipe(
+      tap(_ => console.log(`getLocacao id=${id}`)),
+      catchError(this.handleError<Locacao>(`getLocacao id=${id}`))
+    );
+  }
+  
+  addLocacao (locacao): Observable<Locacao> {
+    const url = `${apiUrl}/locacoes`;
+    return this.http.post<Locacao>(url, locacao, httpOptions).pipe(
+      tap((locacao: Locacao) => console.log(`addLocacao w/id=${locacao.id}`)),
+      catchError(this.handleError<Locacao>('addLocacao'))
+    );
+  }
+  
+  updateLocacao (id, locacao): Observable<any> {
+    const url = `${apiUrl}/locacoes/${id}`;
+    return this.http.put(url, locacao, httpOptions).pipe(
+      tap(_ => console.log(`updateLocacao id=${id}`)),
+      catchError(this.handleError<any>('updateLocacao'))
+    );
+  }
+  
+  deleteLocacao (id): Observable<Locacao> {
+    const url = `${apiUrl}/locacoes/${id}`;
+    return this.http.delete<Locacao>(url, httpOptions).pipe(
+      tap(_ => console.log(`deleteLocacao id=${id}`)),
+      catchError(this.handleError<Locacao>('deleteLocacao'))
+    );
+  }
   
 }
 

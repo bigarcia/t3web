@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { Locadora } from '../../models/locadora';
+import { Locacao } from '../../models/locacao';
 
 @Component({
   selector: 'app-locadora-detalhes',

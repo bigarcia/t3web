@@ -2,6 +2,7 @@ package server
 
 import br.ufscar.dc.dsw.Cliente
 import br.ufscar.dc.dsw.Locadora
+import br.ufscar.dc.dsw.Locacao
 
 class BootStrap {
 
@@ -12,6 +13,9 @@ class BootStrap {
     
         Cliente cliente = new Cliente (cpf: '11111111111', nome: 'Cliente1')
         cliente.save()
+        
+        Locacao locacao = new Locacao (data: '11/11/1111', hora: '09:00', cliente: cliente, locadora: locadora)
+        locacao.save()
 
      
 
@@ -24,11 +28,20 @@ class BootStrap {
 		
         println " "
 
-         if (locadora.hasErrors()) {
+        if (locadora.hasErrors()) {
             println "Cadastro de Locadora com erros"
             println locadora.errors
         } else {
             println "Locadora criado com sucesso"
+        }
+		
+        println " "
+
+        if (locacao.hasErrors()) {
+            println "Cadastro de Locacao com erros"
+            println locacao.errors
+        } else {
+            println "Locacao criado com sucesso"
         }
 		
         println " "

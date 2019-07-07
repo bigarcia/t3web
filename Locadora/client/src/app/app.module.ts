@@ -25,6 +25,10 @@ import {
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule } from "@angular/material";
+import { LocacoesComponent } from './components/locacoes/locacoes.component';
+import { LocacaoCadastroComponent } from './components/locacao-cadastro/locacao-cadastro.component';
+import { LocacaoDetalhesComponent } from './components/locacao-detalhes/locacao-detalhes.component';
+import { LocacaoEdicaoComponent } from './components/locacao-edicao/locacao-edicao.component';
 
 
 
@@ -38,7 +42,11 @@ import {
     LocadorasComponent,
     LocadoraCadastroComponent,
     LocadoraDetalhesComponent,
-    LocadoraEdicaoComponent
+    LocadoraEdicaoComponent,
+    LocacoesComponent,
+    LocacaoCadastroComponent,
+    LocacaoDetalhesComponent,
+    LocacaoEdicaoComponent
   ],
   imports: [
     BrowserModule,

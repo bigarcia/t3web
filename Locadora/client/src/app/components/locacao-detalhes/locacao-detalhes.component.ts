@@ -2,21 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { Cliente } from '../../models/cliente';
+import { Locadora } from '../../models/locadora';
 import { Locacao } from '../../models/locacao';
 
+
 @Component({
-  selector: 'app-cliente-detalhes',
-  templateUrl: './cliente-detalhes.component.html',
-  styleUrls: ['./cliente-detalhes.component.css']
+  selector: 'app-locacao-detalhes',
+  templateUrl: './locacao-detalhes.component.html',
+  styleUrls: ['./locacao-detalhes.component.css']
 })
-export class ClienteDetalhesComponent implements OnInit {
-  cliente: Cliente = { id: '', cpf: '', nome: '', telefone: null, sexo: null, data: null};
+export class LocacaoDetalhesComponent implements OnInit {
+
+  locacao: Locacao = { id: '', data: '', hora: '', cliente: new Cliente(), locadora: new Locadora()  };
   isLoadingResults = true;
-
   constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) { }
-
+  
   async getData(id) {
-    this.cliente = await this.api.getCliente(id).toPromise();
+    this.locacao = await this.api.getLocacao(id).toPromise();
     this.isLoadingResults = false;
     console.debug('No issues, I will wait until promise is resolved..');
   }
@@ -24,18 +26,19 @@ export class ClienteDetalhesComponent implements OnInit {
     this.getData(this.route.snapshot.params['id']);
   }
 
-  deleteCliente(id) {
+  deleteLocacao(id) {
     this.isLoadingResults = true;
-    this.api.deleteCliente(id)
+    this.api.deleteLocacao(id)
       .subscribe(res => {
           this.isLoadingResults = false;
-          this.router.navigate(['/clientes']);
+          this.router.navigate(['/locacoes']);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;
         }
       );
   }
+
 
 
 }

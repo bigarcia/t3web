@@ -1,24 +1,24 @@
-## Projeto 3 da disciplina Desenvolvimento de Software para Web - 2019.1
+# Projeto 3 da disciplina Desenvolvimento de Software para Web - 2019.1
 
-# Desenvolvedoras:
+## Desenvolvedoras:
 - Bianca Martins
 - Gabrieli Santos
 - Giulia Mazzuti 
 - Isadora Gallerani
 
-# Instruções para Compilar o Sistema:
+## Instruções para Compilar o Sistema:
 - cd client; $ ng serve
 - cd server; $grails run-app
 - Usuário padrão (admin) -> user: admin, password: admin
 
-# Especificações do Sistema para Locação de Bicicletas:
+## Especificações do Sistema para Locação de Bicicletas:
 - O sistema deve possuir um cadastro de clientes, com os seguintes dados: e-mail,
 senha, CPF, nome, telefone, sexo e data de nascimento.
 - O sistema deve possuir um cadastro de locadoras, com os seguintes dados: email, senha, CNPJ, nome e cidade.
 - O sistema deve possuir um cadastro de locações, com os seguintes dados:
 cliente, locadora e dia/horário da locação. Assume-se que a duração da locação é de 1 hora e sempre inicia-se em “hora cheia” (13h 00min etc).
 
-# Requisitos do Sistema:
+## Requisitos do Sistema:
 - R1: CRUD de clientes (requer login de administrador).
 - R2: CRUD de locadoras (requer login de administrador).
 - R3: Listagem de todos as locadoras em uma única página (não requer login).

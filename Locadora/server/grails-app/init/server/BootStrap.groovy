@@ -12,6 +12,17 @@ class BootStrap {
     
         Cliente cliente = new Cliente (cpf: '11111111111', nome: 'Cliente1')
         cliente.save()
+
+     
+
+        if (cliente.hasErrors()) {
+            println "Cadastro de Cliente1 com erros"
+            println cliente.errors
+        } else {
+            println "Cliente criado com sucesso"
+        }
+		
+        println " "
     }
     def destroy = {
     }

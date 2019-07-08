@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { JWTService } from './jwt.service';
+import { JwtService } from './jwt.service';
 
 describe('JWTService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: JWTService = TestBed.get(JWTService);
+    const service: JwtService = TestBed.get(JwtService);
     expect(service).toBeTruthy();
   });
 });

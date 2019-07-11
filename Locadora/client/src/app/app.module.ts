@@ -12,7 +12,8 @@ import { LocadoraCadastroComponent } from './components/locadora-cadastro/locado
 import { LocadoraDetalhesComponent } from './components/locadora-detalhes/locadora-detalhes.component';
 import { LocadoraEdicaoComponent } from './components/locadora-edicao/locadora-edicao.component';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {
@@ -29,24 +30,20 @@ import { LocacoesComponent } from './components/locacoes/locacoes.component';
 import { LocacaoCadastroComponent } from './components/locacao-cadastro/locacao-cadastro.component';
 import { LocacaoDetalhesComponent } from './components/locacao-detalhes/locacao-detalhes.component';
 import { LocacaoEdicaoComponent } from './components/locacao-edicao/locacao-edicao.component';
-
+import { AlertComponent } from './components/alert/alert.component';
+import { LoginComponent } from './components/login/login.component';
+import { Authentication } from './models/authentication';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClientesComponent,
-    ClienteCadastroComponent,
-    ClienteDetalhesComponent,
-    ClienteEdicaoComponent,
-    LocadorasComponent,
-    LocadoraCadastroComponent,
-    LocadoraDetalhesComponent,
-    LocadoraEdicaoComponent,
     LocacoesComponent,
     LocacaoCadastroComponent,
     LocacaoDetalhesComponent,
-    LocacaoEdicaoComponent
+    LocacaoEdicaoComponent,
+    AlertComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +61,17 @@ import { LocacaoEdicaoComponent } from './components/locacao-edicao/locacao-edic
     MatButtonModule,
     MatCardModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function tokenGetter() {
+          return localStorage.getItem('access_token');
+        },
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: ['http://localhost:8080/Locadora/api/login',
+          'http://localhost:8080/Locadora/oauth/access_token']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
